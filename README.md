@@ -8,4 +8,4 @@ Currently, the instructions given to listeners are to say if the sound "was inde
 
 To facilitate sharing the data, we'll prioritize labeling the publicly shareable HomeBank recordings, and because this is related to our lab's interest in studying exploration/exploitation/foraging dynamics of infant vocal production, we will focus first on the Warlaumont Corpus data.
 
-Author: Anne S. Warlaumont, warlaumont@ucla.edu, annewarlaumont.org
+Author: Anne S. Warlaumont
