@@ -9,6 +9,6 @@ Updated on Thu Feb 20
 
 import relabel
 
-relabel.relabel_CHN('0274_000221_scrubbed.wav',
+relabel.relabel_CHN('../0274_000221_scrubbed.wav',
                     '0274_000221_scrubbed_CHNrelabel_warlaumont.csv',
                     '0274_000221_segments.csv')
