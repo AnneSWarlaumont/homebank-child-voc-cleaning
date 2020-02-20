@@ -1,6 +1,14 @@
-This document will provide instructions for listeners, such as research assistants, to set up and perform the listening task.
+This document will provide instructions for listeners, such as research assistants, to set up and perform the listening task. For now I'm assuming you're on a Mac like me.
 
 The first thing you should do is to install anaconda, so that you will have the necessary packages, such as scipy.
+
+The task also requires pyglet to be installed. Here are some instructions that should work once you've installed anaconda: https://anaconda.org/conda-forge/pyglet
+
+The task also assumes you are running Box Sync and that I've given you read and write permissions for our lab's HomeBankLabeling folder (https://ucla.app.box.com/folder/103573977921).
+
+To run the task, open up a Terminal window. Then run "cd Documents/Box\ Sync/HomeBankLabeling/homebank-child-voc-cleaning/"
+
+Then type runRelabelCHN.py (I need to change this to allow user input, so each user gets the right file and writes to the correct csv file).
 
 After performing the task for awhile, the program may quit and say a bunch of technical stuff ending in "Error allocating buffer." Here is a screenshot:
 
