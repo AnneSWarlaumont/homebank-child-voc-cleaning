@@ -1,6 +1,6 @@
 # Tools for huamn listeners to manually identify sound types
 
-import pyglet, scipy.io.wavfile, numpy, os.path, csv
+import pyglet, scipy.io.wavfile, numpy, os
 
 def relabel_by_timebin(wavfile,outfile,coding_start_time,coding_end_time,bin_size):
     
@@ -120,6 +120,7 @@ def relabel_CHN(wavfile,outfile,segmentsfile):
                   'low-volume background noise) present. Press return to play '
                   'the sound. To quit, press control+c.')
             pygsound.play()
+            os.remove('temp.wav')
             userInput = input('\nType y if this was indeed a non-vegetative '
                               'target child vocalization without other sounds '
                               '(other than low-volume background noise). '
