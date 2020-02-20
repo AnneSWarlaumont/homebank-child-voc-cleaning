@@ -33,7 +33,7 @@ def relabel_by_timebin(wavfile,outfile,coding_start_time,coding_end_time,bin_siz
         segsounddata = sounddata[playstart*sr:playend*sr]
         scipy.io.wavfile.write('temp.wav',sr,segsounddata)
         pygsound = pyglet.media.load('temp.wav',streaming=False)
-        input(('\n***Instructions***\n\nListen carefully because you will only '
+        input('\n***Instructions***\n\nListen carefully because you will only '
               'get one opportunity to listen.\nBe on the lookout for any '
               'clearly audible vocalization that is primarily communicative '
               'or playful, such as speech, babble, cooing, crying, sighing,'
@@ -48,7 +48,7 @@ def relabel_by_timebin(wavfile,outfile,coding_start_time,coding_end_time,bin_siz
               'without spaces in between. Order of the codes does not matter.'
               ' Leave the space blank if you did not hear any communicative '
               'or playful vocalizations.\n\nPress return to play the sound. '
-              'Press control+c to quit the labeling session.'))
+              'Press control+c to quit the labeling session.')
         pygsound.play()
         userInput = input("\nType the codes for the voices you heard here, then press return: ")
         containsTargetChild = "t" in userInput
@@ -113,22 +113,24 @@ def relabel_CHN(wavfile,outfile,segmentsfile):
             segsounddata = sounddata[int(segstart*sr):int(segend*sr)]
             scipy.io.wavfile.write('temp.wav',sr,segsounddata)
             pygsound = pyglet.media.load('temp.wav',streaming=False)
-            input(('\n***Instructions***\n\nListen carefully because you will '
+            input('\n***Instructions***\n\nListen carefully because you will '
                   'only get one opportunity to listen.\You will be asked '
                   'whether this is a non-ntirely vegetative vocalization by '
                   'the target child, with no other sounds (other than '
                   'low-volume background noise) present. Press return to play '
-                  'the sound. To quit, press control+c.'))
+                  'the sound. To quit, press control+c.')
             pygsound.play()
-            userInput = input(('\nType y if this was indeed a non-vegetative '
+            userInput = input('\nType y if this was indeed a non-vegetative '
                               'target child vocalization without other sounds '
                               '(other than low-volume background noise). '
                               'Otherwise you do not need to enter anything. '
-                              'Then press return: '))
+                              'Then press return: ')
             isTargetChild = "y" in userInput
             outf = open(outfile,'a')
             outf.write(str(segstart) + ',' + str(segend) + ',' + str(isTargetChild) + '\n')
             outf.close()
+            
+    print('You have finished labeling the file. Congratulations & thank you!')
     
     return
         
