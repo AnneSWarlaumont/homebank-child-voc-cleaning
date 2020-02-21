@@ -8,7 +8,7 @@ The task also assumes you are running Box Sync and that I've given you read and 
 
 To run the task, open up a Terminal window. Then run "cd Documents/Box\ Sync/HomeBankLabeling/homebank-child-voc-cleaning/"
 
-Then type python runRelabelCHN.py (I need to change this to allow user input, so each user gets the right file and writes to the correct csv file).
+Then type "python runRelabelCHN.py" (I need to change this to allow user input, so each user gets the right file and writes to the correct csv file).
 
 After performing the task for awhile, the program may quit and say a bunch of technical stuff ending in "Error allocating buffer." Here is a screenshot:
 
