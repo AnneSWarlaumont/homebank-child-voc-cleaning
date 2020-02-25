@@ -1,6 +1,6 @@
 This document will provide instructions for listeners, such as research assistants, to set up and perform the listening task. For now I'm assuming you're on a Mac like me.
 
-The first thing you should do is to install anaconda, so that you will have the necessary packages, such as scipy.
+The first thing you should do is to install anaconda (https://www.anaconda.com/), so that you will have the necessary packages, such as scipy.
 
 The task also requires pyglet to be installed. Here are some instructions that should work once you've installed anaconda: https://anaconda.org/conda-forge/pyglet
 
