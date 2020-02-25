@@ -1,4 +1,6 @@
-This document will provide instructions for listeners, such as research assistants, to set up and perform the listening task. For now I'm assuming you're on a Mac like me.
+**This document provides instructions for listeners, such as research assistants, to set up and perform the listening task.**
+
+For now I'm assuming you're using a Mac.
 
 The first thing you should do is to install anaconda (https://www.anaconda.com/), so that you will have the necessary packages, such as scipy.
 
