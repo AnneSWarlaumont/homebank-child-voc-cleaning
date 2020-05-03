@@ -4,7 +4,8 @@ For now I'm assuming you're using a Mac.
 
 The first thing you should do is to install anaconda (https://www.anaconda.com/), so that you will have the necessary packages, such as scipy.
 
-The task also requires pyglet to be installed. Here are some instructions that should work once you've installed anaconda: https://anaconda.org/conda-forge/pyglet
+The task also requires pyglet to be installed. After successfully installing anaconda, you will need to open up the Terminal app, type or copy in this line:
+"conda install -c conda-forge pyglet", press enter, and then make sure there are no errors. (Reference: https://anaconda.org/conda-forge/pyglet.)
 
 The task also assumes you are running Box Sync and that I've given you read and write permissions for our lab's HomeBankLabeling folder (https://ucla.app.box.com/folder/103573977921). Currently that folder is set to be readable by anyone, and anyone will be able to perform the task, but if you do not have write permissions, your data will not get synced and the data will not be usable by my lab.
 
