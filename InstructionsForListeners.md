@@ -9,7 +9,7 @@ The task also requires pyglet to be installed. After successfully installing ana
 
 The task also assumes you are running Box Sync and that I've given you read and write permissions for our lab's HomeBankLabeling folder (https://ucla.app.box.com/folder/103573977921). Currently that folder is set to be readable by anyone, and anyone will be able to perform the task, but if you do not have write permissions, your data will not get synced and the data will not be usable by my lab.
 
-To run the task, open up a Terminal window. Then run "cd Documents/Box\ Sync/HomeBankLabeling/homebank-child-voc-cleaning/"
+To run the task, open up a Terminal window. Then run "cd Documents/Box\ Sync/HomeBankLabeling/homebank-child-voc-cleaning/" (you may need to change this line if your Box Sync folder is located in a different directory).
 
 Then type "python runRelabelCHN.py" (I need to change this to allow user input, so each user gets the right file and writes to the correct csv file).
 
