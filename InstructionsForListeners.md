@@ -1,4 +1,4 @@
-**This document provides instructions for listeners, such as research assistants, to set up and perform the listening task.**
+**This document provides instructions for listeners, such as research assistants, to set up and perform the child vocalization cleaning task.**
 
 For now I'm assuming you're using a Mac.
 
