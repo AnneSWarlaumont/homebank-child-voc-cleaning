@@ -2,7 +2,7 @@
 
 For now I'm assuming you're using a Mac.
 
-The first thing you should do is to install anaconda (https://www.anaconda.com/products/individual), so that you will have the necessary packages, such as scipy. (Select the Python 3 version, Mac OS, graphical installer.)
+The first thing you should do is to install anaconda (https://www.anaconda.com/products/individual), so that you will have the necessary packages, such as scipy. (Select the Python 3 version, Mac OS, Graphical Installer.)
 
 The task also requires pyglet to be installed. After successfully installing anaconda, you will need to open up the Terminal app, type or copy in this line:
 "conda install -c conda-forge pyglet", press enter, and then make sure there are no errors. (Reference: https://anaconda.org/conda-forge/pyglet.)
