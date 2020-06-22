@@ -7,8 +7,23 @@ Updated on Thu Feb 20
 @author: Anne S. Warlaumont
 """
 
-import relabel
+import relabel, csv
 
-relabel.relabel_CHN('../0340_000301_scrubbed.wav',
-                    '0340_000301_scrubbed_CHNrelabel_warlaumont.csv',
-                    '0340_000301_segments.csv')
+# Get the user to enter their ID
+# so we can look up what they should be listening to
+# and where their judgments should be written
+userID = input('\nWhat is your UCLA Logon ID? ')
+
+# Read in the user's assignments txt file
+userAssignmentsFile = open('relabelCHN_assignments_'+userID+'.txt','r')
+userAssignmentsLines = userAssignmentsFile.readlines()
+
+# Find the first line that doesn't end in "finished" and call
+# relabel.relabel_CHN on each unfinished line.
+for assignment in userAssignmentsLines[1:]:
+    assignmentElements = assignment.rstrip('\n').split(',')
+    status = assignmentElements[3]
+    if status != 'finished':
+        relabel.relabel_CHN('../'+assignmentElements[0],
+                            assignmentElements[2],
+                            assignmentElements[1])

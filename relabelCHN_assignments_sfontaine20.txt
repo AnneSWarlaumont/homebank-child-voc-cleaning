@@ -1,4 +1,0 @@
-wav_filename,segments_filename,output_filename,status
-0833_010606.wav,0833_010606_segments.csv,0833_010606_CHNrelabel_sfontaine20_1.csv,unstarted
-0274_000221_scrubbed.wav,0274_000221_segments.csv,0274_000221_scrubbed_CHNrelabel_sfontaine20_1.csv,unstarted
-0340_000301_scrubbed.wav,0340_000301_segments.csv,0340_000301_scrubbed_CHNrelabel_sfontaine20_1.csv,unstarted
