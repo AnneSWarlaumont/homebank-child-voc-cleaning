@@ -81,6 +81,10 @@ def relabel_CHN(wavfile,outfile,segmentsfile):
     # read in the sound file
     sr, sounddata = scipy.io.wavfile.read(wavfile)
     
+    # Parse the wav filename to find out the age of the child
+    ageYYMMDD = wavfile.split('_')[1][0:6]
+    print(ageYYMMDD[0:2])
+    
     # If the output file already exists,
     # use it to set coding_start_time to pick up where last left off,
     # and append to the output file rather than rewriting it.
@@ -115,10 +119,13 @@ def relabel_CHN(wavfile,outfile,segmentsfile):
             pygsound = pyglet.media.load('temp.wav',streaming=False)
             input('\n***Instructions***\n\nListen carefully because you will '
                   'only get one opportunity to listen.\You will be asked '
-                  'whether this is a non-ntirely vegetative vocalization by '
+                  'whether this is a non-entirely vegetative vocalization by '
                   'the target child, with no other sounds (other than '
-                  'low-volume background noise) present. Press return to play '
-                  'the sound. To quit, press control+c.')
+                  'low-volume background noise) present. Note that the target '
+                  'child in this case is '+ ageYYMMDD[0:2]+' year(s), '+
+                  ageYYMMDD[2:4]+' month(s), and '+ageYYMMDD[4:6]+' day(s) old'
+                  '.\n\nPress return to play the sound. To quit, press control'
+                  '+c.')
             pygsound.play()
             os.remove('temp.wav')
             userInput = input('\nType y if this was indeed a non-vegetative '
