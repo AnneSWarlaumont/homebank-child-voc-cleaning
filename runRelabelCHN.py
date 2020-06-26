@@ -26,12 +26,18 @@ for assignment in userAssignmentsLines[1:]:
     assignmentElements = assignment.rstrip('\n').split(',')
     status = assignmentElements[3]
     if status != 'finished':
+        
         if status == 'unstarted':
             # edit the userAssignmentsFile line to make status "inprogress"
             updatedLine = assignment.replace("unstarted","inprogress")
             for line in fileinput.input('relabelCHN_assignments_'+userID+'.txt', inplace=True):
                 print(line.replace(assignment,updatedLine), end="")
+        
         relabel.relabel_CHN('../'+assignmentElements[0],
                             assignmentElements[2],
                             assignmentElements[1])
+        
         # edit the userAssignmentsFile line to make status "finished"
+        updatedLine = assignment.replace("inprogress","finished")
+        for line in fileinput.input('relabelCHN_assignments_'+userID+'.txt', inplace=True):
+            print(line.replace(assignment,updatedLine), end="")
