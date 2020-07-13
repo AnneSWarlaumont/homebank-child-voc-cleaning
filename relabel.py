@@ -119,20 +119,30 @@ def relabel_CHN(wavfile,outfile,segmentsfile):
             pygsound = pyglet.media.load('temp.wav',streaming=False)
             input('\n***Instructions***\n\nListen carefully because you will '
                   'only get one opportunity to listen.\You will be asked '
-                  'whether this is a non-entirely vegetative vocalization by '
-                  'the target child, with no other sounds (other than '
-                  'low-volume background noise) present. Note that the target '
+                  'whether this is a vocalization produced by the child '
+                  'wearing the recorder (i.e. the target child), with no '
+                  'other noticeable sounds. A target vocalization may be '
+                  'speech, singing, babble, crying, trlling the lips, '
+                  'coughing, grunting, or any other sound produced using the '
+                  'throat, lips, and tongue. Note that the target '
                   'child in this case is '+ ageYYMMDD[0:2]+' year(s), '+
                   ageYYMMDD[2:4]+' month(s), and '+ageYYMMDD[4:6]+' day(s) old'
                   '.\n\nPress return to play the sound. To quit, press control'
                   '+c.')
             pygsound.play()
             os.remove('temp.wav')
-            userInput = input('\nType y if this was indeed a non-vegetative '
-                              'target child vocalization without other sounds '
-                              '(other than low-volume background noise). '
-                              'Otherwise you do not need to enter anything. '
-                              'Then press return: ')
+            userInput = input('\nType y if this was indeed a target child '
+                              'vocalization without other noticeable sounds. '
+                              'A target vocalization may be speech, singing, '
+                              'babble, crying, trlling the lips, coughing, '
+                              'grunting, or any other sound produced using the '
+                              'throat, lips, and tongue. If you heard any '
+                              'other sounds, such as music, rustling, TV, '
+                              'toys, or other voices in addition to the target '
+                              'child, or if there was no vocalization by the '
+                              'target child, please enter n. Then press return: ')
+            while ((userInput != 'y') & (userInput != 'n')):
+                userInput = input('\nPlease enter y or n.')
             isTargetChild = "y" in userInput
             outf = open(outfile,'a')
             outf.write(str(segstart) + ',' + str(segend) + ',' + str(isTargetChild) + '\n')
