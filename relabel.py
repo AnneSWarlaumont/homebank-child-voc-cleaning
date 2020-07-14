@@ -85,6 +85,11 @@ def relabel_CHN(wavfile,outfile,segmentsfile):
     ageYYMMDD = wavfile.split('_')[1][0:6]
     print(ageYYMMDD[0:2])
     
+    # Set the name of the file that will hold the currently playing wav file
+    # We want this to be unique to the listener, in case multiple listeners
+    # are working at the same time.
+    tempwav = 'temp_' + outfile + '.wav'
+    
     # If the output file already exists,
     # use it to set coding_start_time to pick up where last left off,
     # and append to the output file rather than rewriting it.
@@ -115,40 +120,34 @@ def relabel_CHN(wavfile,outfile,segmentsfile):
         if segstart >= coding_start_time and segtype[0:3]=='CHN':
             # play the segment and request user input
             segsounddata = sounddata[int(segstart*sr):int(segend*sr)]
-            scipy.io.wavfile.write('temp.wav',sr,segsounddata)
-            pygsound = pyglet.media.load('temp.wav',streaming=False)
+            scipy.io.wavfile.write(tempwav,sr,segsounddata)
+            pygsound = pyglet.media.load(tempwav,streaming=False)
             input('\n***Instructions***\n\nListen carefully because you will '
-                  'only get one opportunity to listen.\You will be asked '
-                  'whether this is a vocalization produced by the child '
-                  'wearing the recorder (i.e. the target child), with no '
-                  'other noticeable sounds. A target vocalization may be '
-                  'speech, singing, babble, crying, trlling the lips, '
-                  'coughing, grunting, or any other sound produced using the '
-                  'throat, lips, and tongue. Note that the target '
-                  'child in this case is '+ ageYYMMDD[0:2]+' year(s), '+
-                  ageYYMMDD[2:4]+' month(s), and '+ageYYMMDD[4:6]+' day(s) old'
-                  '.\n\nPress return to play the sound. To quit, press control'
-                  '+c.')
+                  'only get one opportunity to listen.'
+                  '\nYou will be asked whether the clip contains a vocalization'
+                  '\nproduced by the child wearing the recorder (i.e. the target child),'
+                  '\nA target vocalization may include speech, singing, babble, crying,'
+                  '\ntrilling the lips, coughing, grunting, or any other sound produced'
+                  '\nusing the throat, lips, and tongue.'
+                  '\nIf there are other sounds present, such as other people or animals,'
+                  '\nbackground noise, rustling, music, etc. that is fine.'
+                  '\nYou need only pay attention to whether there is some sound produced'
+                  '\nby the target child\'s vocal tract.'
+                  '\nNote that the target child in this case is '+ageYYMMDD[0:2]+' year(s), '+ageYYMMDD[2:4]+' month(s), and '+ageYYMMDD[4:6]+' day(s) old.'
+                  '.\n\nPress return to play the sound. To quit, press control+c.')
             pygsound.play()
-            os.remove('temp.wav')
-            userInput = input('\nType y if this was indeed a target child '
-                              'vocalization without other noticeable sounds. '
-                              'A target vocalization may be speech, singing, '
-                              'babble, crying, trlling the lips, coughing, '
-                              'grunting, or any other sound produced using the '
-                              'throat, lips, and tongue. If you heard any '
-                              'other sounds, such as music, rustling, TV, '
-                              'toys, or other voices in addition to the target '
-                              'child, or if there was no vocalization by the '
-                              'target child, please enter n. Then press return: ')
+            os.remove(tempwav)
+            userInput = input('\nType y if the clip included a target child vocalization.'
+                              '\nif there was no vocalization by the target child, please enter n.'
+                              '\nThen press return:\n')
             while ((userInput != 'y') & (userInput != 'n')):
-                userInput = input('\nPlease enter y or n.')
+                userInput = input('\nPlease enter y or n.\n')
             isTargetChild = "y" in userInput
             outf = open(outfile,'a')
             outf.write(str(segstart) + ',' + str(segend) + ',' + str(isTargetChild) + '\n')
             outf.close()
             
-    print('You have finished labeling the file. Congratulations & thank you!')
+    print('\nYou have finished labeling the file. Congratulations & thank you!')
     
     return
         
