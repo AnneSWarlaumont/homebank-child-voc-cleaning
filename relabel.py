@@ -106,7 +106,7 @@ def relabel_CHN(wavfile,outfile,segmentsfile):
         outf.close()
     else:
         outf = open(outfile,'w')
-        outf.write('startSeconds,endSeconds,isTargetChild\n')
+        outf.write('startSeconds,endSeconds,includesTargetChild\n')
         outf.close()
         coding_start_time = 0
         
