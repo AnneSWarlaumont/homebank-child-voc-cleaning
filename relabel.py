@@ -122,23 +122,24 @@ def relabel_CHN(wavfile,outfile,segmentsfile):
             segsounddata = sounddata[int(segstart*sr):int(segend*sr)]
             scipy.io.wavfile.write(tempwav,sr,segsounddata)
             pygsound = pyglet.media.load(tempwav,streaming=False)
-            input('\n***Instructions***\n\nListen carefully because you will '
-                  'only get one opportunity to listen.'
-                  '\nYou will be asked whether the clip contains a vocalization'
-                  '\nproduced by the child wearing the recorder (i.e. the target child),'
-                  '\nA target vocalization may include speech, singing, babble, crying,'
+            input('\n***Instructions***'
+                  '\n\nListen carefully because you will only get one opportunity to listen.'
+                  '\n\nYou will be asked whether the clip contains a vocalization'
+                  '\nproduced by the child wearing the recorder (i.e. the target child).'
+                  '\n\nA target vocalization may include speech, singing, babble, crying,'
                   '\ntrilling the lips, coughing, grunting, or any other sound produced'
-                  '\nusing the throat, lips, and tongue.'
-                  '\nIf there are other sounds present, such as other people or animals,'
-                  '\nbackground noise, rustling, music, etc. that is fine.'
-                  '\nYou need only pay attention to whether there is some sound produced'
-                  '\nby the target child\'s vocal tract.'
-                  '\nNote that the target child in this case is '+ageYYMMDD[0:2]+' year(s), '+ageYYMMDD[2:4]+' month(s), and '+ageYYMMDD[4:6]+' day(s) old.'
-                  '.\n\nPress return to play the sound. To quit, press control+c.')
+                  '\nusing the throat, lips, and/or tongue.'
+                  '\n\nIf there are other sounds present, such as other people or animals,'
+                  '\nbackground noise, rustling, music, etc. that is fine. You need only pay'
+                  '\nattention to whether there is some sound produced by the target child\'s'
+                  '\nvocal tract.'
+                  '\n\nNote that the target child in this case is '+ageYYMMDD[0:2]+' year(s), '+ageYYMMDD[2:4]+' month(s), '
+                  '\nand '+ageYYMMDD[4:6]+' day(s) old.'
+                  '\n\nPress return to play the sound. To quit, press control+c.')
             pygsound.play()
             os.remove(tempwav)
             userInput = input('\nType y if the clip included a target child vocalization.'
-                              '\nif there was no vocalization by the target child, please enter n.'
+                              '\nIf there was no vocalization by the target child, please enter n.'
                               '\nThen press return:\n')
             while ((userInput != 'y') & (userInput != 'n')):
                 userInput = input('\nPlease enter y or n.\n')
