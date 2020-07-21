@@ -122,7 +122,8 @@ def relabel_CHN(wavfile,outfile,segmentsfile):
             segsounddata = sounddata[int(segstart*sr):int(segend*sr)]
             scipy.io.wavfile.write(tempwav,sr,segsounddata)
             pygsound = pyglet.media.load(tempwav,streaming=False)
-            input('\n***Instructions***'
+            input('\n***'
+                  '\n\n***Instructions***'
                   '\n\nListen carefully because you will only get one opportunity to listen.'
                   '\n\nYou will be asked whether the clip contains a vocalization'
                   '\nproduced by the child wearing the recorder (i.e. the target child).'
@@ -138,7 +139,12 @@ def relabel_CHN(wavfile,outfile,segmentsfile):
                   '\n\nPress return to play the sound. To quit, press control+c.')
             pygsound.play()
             os.remove(tempwav)
-            userInput = input('\nType y if the clip included a target child vocalization.'
+            userInput = input('\n***'
+                              '\n\n(At this time, you may quit without saving a judgment by pressing'
+                              '\ncontrol+c. If you quit then next time you start the program it will'
+                              '\nreply the sound. So this may be a good option if you need to play'
+                              '\nthe sound again before making your judgment.)'
+                              '\nType y if the clip included a target child vocalization.'
                               '\nIf there was no vocalization by the target child, please enter n.'
                               '\nThen press return:\n')
             while ((userInput != 'y') & (userInput != 'n')):
