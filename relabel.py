@@ -71,7 +71,7 @@ def relabel_by_segment(wavfile,outfile,segmentsfile):
     
     return
 
-def relabel_CHN(wavfile,outfile,segmentsfile):
+def relabel_CHN(wavfile,outfile,segmentsfile,instructionsv):
     
     # Using the output of segments.pl,
     # play all the CHN segments,
@@ -106,7 +106,10 @@ def relabel_CHN(wavfile,outfile,segmentsfile):
         outf.close()
     else:
         outf = open(outfile,'w')
-        outf.write('startSeconds,endSeconds,includesTargetChild\n')
+        if instructionsv == 2:
+            outf.write('startSeconds,endSeconds,includesTargetChild\n')
+        elif instructionsv == 3:
+            outf.write('startSeconds,endSeconds,targetChildProminence\n')
         outf.close()
         coding_start_time = 0
         
@@ -122,37 +125,75 @@ def relabel_CHN(wavfile,outfile,segmentsfile):
             segsounddata = sounddata[int(segstart*sr):int(segend*sr)]
             scipy.io.wavfile.write(tempwav,sr,segsounddata)
             pygsound = pyglet.media.load(tempwav,streaming=False)
-            input('\n***'
-                  '\n\n***Instructions***'
-                  '\n\nListen carefully because you will only get one opportunity to listen.'
-                  '\n\nYou will be asked whether the clip contains a vocalization'
-                  '\nproduced by the child wearing the recorder (i.e. the target child).'
-                  '\n\nA target vocalization may include speech, singing, babble, crying,'
-                  '\ntrilling the lips, coughing, grunting, or any other sound produced'
-                  '\nusing the throat, lips, and/or tongue.'
-                  '\n\nIf there are other sounds present, such as other people or animals,'
-                  '\nbackground noise, rustling, music, etc. that is fine. You need only pay'
-                  '\nattention to whether there is some sound produced by the target child\'s'
-                  '\nvocal tract.'
-                  '\n\nNote that the target child in this case is '+ageYYMMDD[0:2]+' year(s), '+ageYYMMDD[2:4]+' month(s), '
-                  '\nand '+ageYYMMDD[4:6]+' day(s) old.'
-                  '\n\nPress return to play the sound. To quit, press control+c.')
+            if instructionsv == 2:
+                input('\n***'
+                      '\n\n***Instructions***'
+                      '\n\nListen carefully because you will only get one opportunity to listen.'
+                      '\n\nYou will be asked whether the clip contains a vocalization'
+                      '\nproduced by the child wearing the recorder (i.e. the target child).'
+                      '\n\nA target child vocalization may include speech, singing, babble, crying,'
+                      '\ntrilling the lips, coughing, grunting, or any other sound produced'
+                      '\nusing the throat, lips, and/or tongue.'
+                      '\n\nIf there are other sounds present, such as other people or animals,'
+                      '\nbackground noise, rustling, music, etc. that is fine. You need only pay'
+                      '\nattention to whether there is some sound produced by the target child\'s'
+                      '\nvocal tract.'
+                      '\n\nNote that the target child in this case is '+ageYYMMDD[0:2]+' year(s), '+ageYYMMDD[2:4]+' month(s), '
+                      '\nand '+ageYYMMDD[4:6]+' day(s) old.'
+                      '\n\nPress return to play the sound. To quit, press control+c.')
+            elif instructionsv == 3:
+                input('\n***'
+                      '\n\n***Instructions***'
+                      '\n\nListen carefully because you will only get one opportunity to listen.'
+                      '\n\nYou will be asked about the prominence within the clip of the voice '
+                      '\nof the child wearing the recorder (i.e. the target child) compared to '
+                      '\nall other sounds, such as other voices, background noise, rustling, etc.'
+                      '\n\nA target child vocalization may include speech, singing, babble, crying,'
+                      '\ntrilling the lips, coughing, grunting, or any other sound produced'
+                      '\nusing the throat, lips, and/or tongue.'
+                      '\n\nNote that the target child in this case is '+ageYYMMDD[0:2]+' year(s), '+ageYYMMDD[2:4]+' month(s), '
+                      '\nand '+ageYYMMDD[4:6]+' day(s) old.'
+                      '\n\nPress return to play the sound. To quit, press control+c.')
             pygsound.play()
             os.remove(tempwav)
-            userInput = input('\n***'
-                              '\n\n(At this time, you may quit without saving a judgment by pressing'
-                              '\ncontrol+c. If you quit then next time you start the program it will'
-                              '\nreply the sound. So this may be a good option if you need to play'
-                              '\nthe sound again before making your judgment.)'
-                              '\nType y if the clip included a target child vocalization.'
-                              '\nIf there was no vocalization by the target child, please enter n.'
-                              '\nThen press return:\n')
-            while ((userInput != 'y') & (userInput != 'n')):
-                userInput = input('\nPlease enter y or n.\n')
-            isTargetChild = "y" in userInput
-            outf = open(outfile,'a')
-            outf.write(str(segstart) + ',' + str(segend) + ',' + str(isTargetChild) + '\n')
-            outf.close()
+            
+            if instructionsv == 2:
+                userInput = input('\n***'
+                                  '\n\n(At this time, you may quit without saving a judgment by pressing'
+                                  '\ncontrol+c. If you quit then next time you start the program it will'
+                                  '\nreply the sound. So this may be a good option if you need to play'
+                                  '\nthe sound again before making your judgment.)'
+                                  '\nType y if the clip included a target child vocalization.'
+                                  '\nIf there was no vocalization by the target child, please enter n.'
+                                  '\nThen press return:\n')
+                 while ((userInput != 'y') & (userInput != 'n')):
+                     userInput = input('\nPlease enter y or n.\n')
+                 isTargetChild = "y" in userInput
+                 outf = open(outfile,'a')
+                 outf.write(str(segstart) + ',' + str(segend) + ',' + str(isTargetChild) + '\n')
+                 outf.close()
+            elif instructionsv == 3:
+                userInput = input('\n***'
+                                  '\n\n(At this time, you may quit without saving a judgment by pressing'
+                                  '\ncontrol+c. If you quit then next time you start the program it will'
+                                  '\nreply the sound. So this may be a good option if you need to play'
+                                  '\nthe sound again before making your judgment.)'
+                                  '\n\nType 1 if you heard only the target child\'s voice.'
+                                  '\n\nType 2 if you heard some background noise or other sound(s) but '
+                                  '\nthe infant vocalization is clearly the dominant sound in the clip.'
+                                  '\n\nType 3 if you heard some background noise or other sound(s) and '
+                                  '\nthe target child vocalization and the other sound(s) are similar in'
+                                  '\n how dominant they are within the clip.'
+                                  '\n\nType 4 if you heard a target chid vocalization but it was definitely '
+                                  '\nnot the dominant sound in the clip.'
+                                  '\n\nType 5 if there did not appear to be a target child vocalization'
+                                  '\n within the clip.'
+                                  '\n\nThen press return:\n')
+                 while ((userInput != '1') & (userInput != '2')) & (userInput != '3')) & (userInput != '4')) & (userInput != '5')):
+                     userInput = input('\nPlease enter a number between 1 and 5.\n')
+                 outf = open(outfile,'a')
+                 outf.write(str(segstart) + ',' + str(segend) + ',' + userInput + '\n')
+                 outf.close()
             
     print('\nYou have finished labeling the file. Congratulations & thank you!')
     
