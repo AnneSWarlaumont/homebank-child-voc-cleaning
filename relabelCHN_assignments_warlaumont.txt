@@ -5,3 +5,4 @@ wav_filename,segments_filename,output_filename,status,instructions_version
 0857_000301_scrubbed.wav,0857_000301_segments.csv,0857_000301_scrubbed_CHNrelabel_warlaumont_1.csv,finished,1
 0833_010606.wav,0833_010606_segments.csv,0833_010606_CHNrelabel_warlaumont_2.csv,finished,2
 0274_000221_scrubbed.wav,0274_000221_segments.csv,0274_000221_scrubbed_CHNrelabel_warlaumont_2.csv,finished,2
+0340_000301_scrubbed.wav,0340_000301_segments.csv,0340_000301_scrubbed_CHNrelabel_warlaumont_2.csv,inprogress,3
