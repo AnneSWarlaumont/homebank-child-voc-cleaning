@@ -25,7 +25,7 @@ userAssignmentsFile.close()
 for assignment in userAssignmentsLines[1:]:
     assignmentElements = assignment.rstrip('\n').split(',')
     status = assignmentElements[3]
-    instructionsv = assignmnetElements[4]
+    instructionsv = assignmentElements[4]
     if status != 'finished':
         
         if status == 'unstarted':

@@ -166,12 +166,12 @@ def relabel_CHN(wavfile,outfile,segmentsfile,instructionsv):
                                   '\nType y if the clip included a target child vocalization.'
                                   '\nIf there was no vocalization by the target child, please enter n.'
                                   '\nThen press return:\n')
-                 while ((userInput != 'y') & (userInput != 'n')):
-                     userInput = input('\nPlease enter y or n.\n')
-                 isTargetChild = "y" in userInput
-                 outf = open(outfile,'a')
-                 outf.write(str(segstart) + ',' + str(segend) + ',' + str(isTargetChild) + '\n')
-                 outf.close()
+                while ((userInput != 'y') & (userInput != 'n')):
+                    userInput = input('\nPlease enter y or n.\n')
+                isTargetChild = "y" in userInput
+                outf = open(outfile,'a')
+                outf.write(str(segstart) + ',' + str(segend) + ',' + str(isTargetChild) + '\n')
+                outf.close()
             elif instructionsv == 3:
                 userInput = input('\n***'
                                   '\n\n(At this time, you may quit without saving a judgment by pressing'
@@ -189,11 +189,11 @@ def relabel_CHN(wavfile,outfile,segmentsfile,instructionsv):
                                   '\n\nType 5 if there did not appear to be a target child vocalization'
                                   '\n within the clip.'
                                   '\n\nThen press return:\n')
-                 while ((userInput != '1') & (userInput != '2')) & (userInput != '3')) & (userInput != '4')) & (userInput != '5')):
-                     userInput = input('\nPlease enter a number between 1 and 5.\n')
-                 outf = open(outfile,'a')
-                 outf.write(str(segstart) + ',' + str(segend) + ',' + userInput + '\n')
-                 outf.close()
+                while ((userInput != '1') & (userInput != '2') & (userInput != '3') & (userInput != '4') & (userInput != '5')):
+                    userInput = input('\nPlease enter a number between 1 and 5.\n')
+                outf = open(outfile,'a')
+                outf.write(str(segstart) + ',' + str(segend) + ',' + userInput + '\n')
+                outf.close()
             
     print('\nYou have finished labeling the file. Congratulations & thank you!')
     
