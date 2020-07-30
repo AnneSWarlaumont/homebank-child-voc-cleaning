@@ -106,9 +106,9 @@ def relabel_CHN(wavfile,outfile,segmentsfile,instructionsv):
         outf.close()
     else:
         outf = open(outfile,'w')
-        if instructionsv == 2:
+        if instructionsv == '2':
             outf.write('startSeconds,endSeconds,includesTargetChild\n')
-        elif instructionsv == 3:
+        elif instructionsv == '3':
             outf.write('startSeconds,endSeconds,targetChildProminence\n')
         outf.close()
         coding_start_time = 0
@@ -125,7 +125,7 @@ def relabel_CHN(wavfile,outfile,segmentsfile,instructionsv):
             segsounddata = sounddata[int(segstart*sr):int(segend*sr)]
             scipy.io.wavfile.write(tempwav,sr,segsounddata)
             pygsound = pyglet.media.load(tempwav,streaming=False)
-            if instructionsv == 2:
+            if instructionsv == '2':
                 input('\n***'
                       '\n\n***Instructions***'
                       '\n\nListen carefully because you will only get one opportunity to listen.'
@@ -141,7 +141,7 @@ def relabel_CHN(wavfile,outfile,segmentsfile,instructionsv):
                       '\n\nNote that the target child in this case is '+ageYYMMDD[0:2]+' year(s), '+ageYYMMDD[2:4]+' month(s), '
                       '\nand '+ageYYMMDD[4:6]+' day(s) old.'
                       '\n\nPress return to play the sound. To quit, press control+c.')
-            elif instructionsv == 3:
+            elif instructionsv == '3':
                 input('\n***'
                       '\n\n***Instructions***'
                       '\n\nListen carefully because you will only get one opportunity to listen.'
@@ -157,7 +157,7 @@ def relabel_CHN(wavfile,outfile,segmentsfile,instructionsv):
             pygsound.play()
             os.remove(tempwav)
             
-            if instructionsv == 2:
+            if instructionsv == '2':
                 userInput = input('\n***'
                                   '\n\n(At this time, you may quit without saving a judgment by pressing'
                                   '\ncontrol+c. If you quit then next time you start the program it will'
@@ -172,7 +172,7 @@ def relabel_CHN(wavfile,outfile,segmentsfile,instructionsv):
                 outf = open(outfile,'a')
                 outf.write(str(segstart) + ',' + str(segend) + ',' + str(isTargetChild) + '\n')
                 outf.close()
-            elif instructionsv == 3:
+            elif instructionsv == '3':
                 userInput = input('\n***'
                                   '\n\n(At this time, you may quit without saving a judgment by pressing'
                                   '\ncontrol+c. If you quit then next time you start the program it will'
