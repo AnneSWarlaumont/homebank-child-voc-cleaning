@@ -7,7 +7,7 @@ The first thing you should do is to install anaconda (https://www.anaconda.com/p
 The task also requires pyglet to be installed. After successfully installing anaconda, you will need to open up the Terminal app, type or copy in this line:
 "conda install -c conda-forge pyglet", press enter, and then make sure there are no errors. If asked to proceed with updates, enter "y". (Reference: https://anaconda.org/conda-forge/pyglet.)
 
-These instructions assume you are running Box Drive and that I've given you edit permissions for our lab's HomeBankLabeling folder (https://ucla.app.box.com/folder/103573977921).
+These instructions assume you are running Box Drive and that I've given you edit permissions for our lab's HomeBankLabeling/homebank-child-voc-cleaning folder (https://ucla.app.box.com/folder/103573977921), which includes a subfolder containing a clone of this GitHub repository. *(If you are not a member of our lab and are interested in trying out the task, you are free to download and try things out on your own system, though you will need to make some minor edits to a few files and you'll also need to supply your own audio--some publicly available at homebank.talkbank.org. Or you can email me if you're interested in contributing as a volunteer to our labeling effort!)*
 
 To run the task, open up the Terminal application. Then run "cd Box/HomeBankLabeling/homebank-child-voc-cleaning/" (you may need to change this line if your Box Drive folder is located in a different directory).
 
