@@ -1,0 +1,2 @@
+wav_filename,segments_filename,output_filename,status,instructions_version
+0530_000304.wav,0530_000304_segments.csv,0530_000304_CHNrelabel_bwin_1.csv,unstarted,3
