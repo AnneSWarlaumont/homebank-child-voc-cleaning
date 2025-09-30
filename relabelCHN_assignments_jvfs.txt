@@ -11,4 +11,4 @@ wav_filename,segments_filename,output_filename,status,instructions_version
 0340_000301_scrubbed.wav,0340_000301_segments.csv,0340_000301_scrubbed_CHNrelabel_jvfs_1.csv,finished,3
 0344_000913.wav,0344_000913_segments.csv,0344_000913_CHNrelabel_jvfs_2.csv,finished,3
 0857_000301_scrubbed.wav,0857_000301_segments.csv,0857_000301_scrubbed_CHNrelabel_jvfs_2.csv,finished,3
-0196_000902_scrubbed.wav,0196_000902_segments.csv,0196_000902_scrubbed_CHNrelabel_jvfs_2.csv,finished,3
+0196_000902_scrubbed.wav,0196_000902_segments.csv,0196_000902_scrubbed_CHNrelabel_jvfs_2.csv,inprogress,3
